@@ -1,0 +1,200 @@
+:root {
+  --bg: #f6f1e8;
+  --surface: #fffcf7;
+  --ink: #1a1612;
+  --muted: #6b635a;
+  --line: rgba(26, 22, 18, 0.1);
+  --accent: #7445e3;
+  --mark: #f0c419;
+  --shadow: 0 18px 50px rgba(33, 29, 25, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(116, 69, 227, 0.08), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(240, 196, 25, 0.14), transparent 50%),
+    var(--bg);
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.chrome {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1rem, 3vw, 1.75rem);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.chrome__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.chrome__mark {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.55rem;
+  background: var(--mark);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.chrome__mark::after {
+  content: "";
+  position: absolute;
+  inset: 0.45rem 0.5rem auto;
+  height: 0.7rem;
+  border-left: 3px solid var(--accent);
+  border-right: 3px solid var(--accent);
+  border-top: 3px solid var(--accent);
+  border-radius: 2px 2px 0 0;
+  transform: rotate(180deg);
+}
+
+.chrome__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chrome__by {
+  margin: 0.1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.chrome__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.chrome__count {
+  margin: 0;
+  min-width: 3.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.chrome__slash {
+  opacity: 0.45;
+  margin: 0 0.15rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: #fff;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.deck {
+  outline: none;
+  padding: clamp(1rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem) 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.slide {
+  margin: 0;
+  scroll-margin-top: 4.5rem;
+  background: var(--surface);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  aspect-ratio: 16 / 9;
+}
+
+.slide.is-active {
+  outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 3px;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fdf8f1;
+}
+
+@media (max-width: 720px) {
+  .chrome__by {
+    display: none;
+  }
+
+  .deck {
+    padding-inline: 0.5rem;
+  }
+
+  .slide {
+    border-radius: 8px;
+  }
+}
