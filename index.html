@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip" href="#deck">Skip to slides</a>
+  <a class="skip" href="#deck">Skip to content</a>
 
-  <header class="chrome" aria-label="Presentation controls">
+  <header class="chrome" aria-label="Page header">
     <div class="chrome__brand">
       <span class="chrome__mark" aria-hidden="true"></span>
       <div>
@@ -21,17 +21,10 @@
         <p class="chrome__by">By Kaif Saleem</p>
       </div>
     </div>
-    <div class="chrome__nav">
-      <button type="button" class="btn" id="prev" aria-label="Previous slide">←</button>
-      <p class="chrome__count" aria-live="polite">
-        <span id="current">1</span><span class="chrome__slash">/</span><span id="total">31</span>
-      </p>
-      <button type="button" class="btn" id="next" aria-label="Next slide">→</button>
-    </div>
   </header>
 
-  <main id="deck" class="deck" tabindex="0" aria-label="Design Thinking · Super App slides">
-    <!-- slides injected -->
+  <main id="deck" class="deck" aria-label="Design Thinking · Super App case study">
+    <!-- content injected -->
   </main>
 
   <script src="script.js"></script>
